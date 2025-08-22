@@ -191,8 +191,8 @@
 
     /* Contact */
     .contact form {
-      max-width: 600px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 1rem;
+      max-width: 600px; margin:0 auto;
+      display: flex; flex-direction: column; gap: 3rem;
     }
     .contact input, .contact textarea {
       padding: 0.8rem; border: 1px solid #ddd; border-radius: 10px;
@@ -296,46 +296,240 @@
       <span>- Thandi M.</span>
     </div>
   </section>
-  <h2>Get In Touch</h2>
-                <p>Interested in our programmes or looking to partner with us? Reach out to our team.</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
+
                     
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Greenacres, Gqeberha, 6001</span>
+   <!-- Contact Section -->
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Capaciti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--primary)',
+                        secondary: 'var(--secondary)',
+                        accent1: 'var(--accent1)',
+                        accent2: 'var(--accent2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+       :root {
+      --primary: #10285B; /* Space Kadet */
+      --secondary: #871ED0; /* Purple */
+      --accent1: #F25251; /* Salmon */
+      --accent2: #F1D1D1; /* Pink */
+      --dark: #1a1a2e;
+      --light: #f9f9f9;
+      --gray: #6c757d;
+    }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .input-focus:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Map container */
+        .map-container {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary fade-in">Get In Touch With Us</h2>
+           
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="name" required class="w-full px-4 py-2 border rounded-md input-focus focus:outline-none">
+                            <p id="nameError" class="text-red-500 text-sm mt-1 hidden">Please enter your name</p>
                         </div>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-phone"></i>
-                            <span>+27 (0) 21 003 7509</span>
+                       
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" required class="w-full px-4 py-2 border rounded-md input-focus focus:outline-none">
+                            <p id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address</p>
                         </div>
+                       
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-2 border rounded-md input-focus focus:outline-none"></textarea>
+                            <p id="messageError" class="text-red-500 text-sm mt-1 hidden">Please enter your message</p>
+                        </div>
+                       
+                        <button type="submit" class="btn-primary px-6 py-3 rounded-md font-medium transition-all duration-300">
+                            Send Message
+                        </button>
                         
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <span>hello@capaciti.org.za</span>
+                        <p id="formSuccess" class="text-green-500 mt-4 hidden">Thank you for your message! We'll get back to you soon.</p>
+                    </form>
+                </div>
+               
+                <!-- Contact Info + Socials -->
+                <div class="space-y-8 fade-in">
+                    <div class="p-6 rounded-lg" style="background-color: var(--accent2);">
+                        <h3 class="text-xl font-semibold mb-4 text-secondary">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4 text-secondary"></i>
+                                <div>
+                                    <span>Greenacres, Gqeberha, 6001, South Africa</span>
+                                    <!-- Map placeholder -->
+                                    <div class="map-container mt-3 bg-gray-200 flex items-center justify-center">
+                                        <p class="text-gray-500 text-center p-4">
+                                            <i class="fas fa-map-marked-alt text-2xl mb-2 text-secondary"></i><br>
+                                            Map would load here
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone mr-4 text-secondary"></i>
+                                <span>+27 (0) 21 003 7509</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope mr-4 text-secondary"></i>
+                                <a href="mailto:hello@capaciti.org.za" class="hover:text-secondary transition-colors">hello@capaciti.org.za</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-globe mr-4 text-secondary"></i>
+                                <a href="https://www.capaciti.org.za" target="_blank" class="hover:text-secondary transition-colors">www.capaciti.org.za</a>
+                            </div>
                         </div>
                     </div>
-                    
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-    </form>
-  </section>
+                   
+                    <!-- Follow Us -->
+                    <div class="p-6 rounded-lg" style="background-color: var(--accent2);">
+                        <h3 class="text-xl font-semibold mb-4 text-secondary">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" aria-label="Twitter" class="social-icon h-10 w-10 rounded-full flex items-center justify-center text-white bg-secondary">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" aria-label="Facebook" class="social-icon h-10 w-10 rounded-full flex items-center justify-center text-white bg-secondary">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" aria-label="LinkedIn" class="social-icon h-10 w-10 rounded-full flex items-center justify-center text-white bg-secondary">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-icon h-10 w-10 rounded-full flex items-center justify-center text-white bg-secondary">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+            const formSuccess = document.getElementById('formSuccess');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Reset errors
+                nameError.classList.add('hidden');
+                emailError.classList.add('hidden');
+                messageError.classList.add('hidden');
+                
+                // Validate name
+                if (!nameInput.value.trim()) {
+                    nameError.classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                // Validate email
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                // Validate message
+                if (!messageInput.value.trim()) {
+                    messageError.classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Here you would typically send the form data to a server
+                    // For demonstration, we'll just show a success message
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formSuccess.classList.add('hidden');
+                    }, 5000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>>
+               
+                
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 CAPACITI. All rights reserved.</p>
   </footer>
 </body>
 </html>
+
+
 
